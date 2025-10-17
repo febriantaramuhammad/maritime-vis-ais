@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vessel Information System</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" type="image/x-icon" href="assets/icon.png" />
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <header>
+        <div class="brand">
+            <img src="assets/logo-white.png" alt="Telkomsat Logo" />
+            <div>
+                <h1>Vessel Information System</h1>
+                <p class="tagline">Satellite-Based Fleet Tracking • Fuel Monitoring • Telematics</p>
+            </div>
+        </div>
+
+        <div class="controls">
+            <select id="vesselSelector">
+                <option value="vessel-1">MV Oceanic Star</option>
+                <option value="vessel-2">MV Pacific Trader</option>
+                <option value="vessel-3">MV Nusantara Link</option>
+            </select>
+            <button id="realtimeBtn">Real-Time Tracking</button>
+            <button id="historyBtn">Historical Tracking</button>
+            <button id="exportBtn">📥 Export History (CSV)</button>
+            <button id="resetBtn">🗑️ Reset All Data</button>
+            <button id="logoutBtn">Logout</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Peta Global -->
+        <section id="mapSection">
+            <h2>Vessel Tracking Map</h2>
+            <div id="mapContainer"></div>
+        </section>
+
+        <!-- Informasi Kapal Saat Ini -->
+        <section id="infoPanel">
+            <h2>Current Vessel Information</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <span class="label">Position</span>
+                    <span id="currentPos">-</span>
+                </div>
+                <div class="info-card">
+                    <span class="label">Speed</span>
+                    <span id="currentSpeed">-</span> knots
+                </div>
+                <div class="info-card">
+                    <span class="label">Heading</span>
+                    <span id="currentHeading">-</span>°
+                </div>
+                <div class="info-card">
+                    <span class="label">Status</span>
+                    <span id="currentStatus">-</span>
+                </div>
+                <div class="info-card">
+                    <span class="label">Fuel Usage</span>
+                    <span id="fuelUsage">-</span> L/h
+                </div>
+                <div class="info-card">
+                    <span class="label">Engine Temp</span>
+                    <span id="engineTemp">-</span>°C
+                </div>
+                <div class="info-card">
+                    <span class="label">Sensor Alert</span>
+                    <span id="sensorAlert">-</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Panel Notifikasi -->
+        <section id="alertPanel" class="hidden">
+            <h2>⚠️ Sensor Alerts</h2>
+            <div id="alertList"></div>
+        </section>
+
+        <!-- Grafik Monitoring -->
+        <section id="chartsSection">
+            <h2>Fuel & Engine Monitoring</h2>
+            <div class="chart-container">
+                <canvas id="fuelChart"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="engineChart"></canvas>
+            </div>
+        </section>
+
+        <!-- Tabel Historis -->
+        <section id="historyTableSection">
+            <h2>Historical Tracking Data</h2>
+            <table id="historyTable">
+                <thead>
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Speed</th>
+                        <th>Heading</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="historyBody">
+                    <!-- Diisi oleh JavaScript -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer>
+        <p>© Telkomsat 2025 | Enhancing Maritime Efficiency with Satellite Communication & Fleet Tracking</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
