@@ -52,7 +52,7 @@ body {
     flex-direction: column;
     justify-content: center;
     gap: 20px;
-    background-color: black;
+    background-color: var(--card-bg);
 }
 
 .logo {
@@ -94,7 +94,7 @@ body {
 }
 
 #loginForm button {
-    background-color: red;
+    background-color: var(--primary-dark);
     color: white;
     cursor: pointer;
     border: none;
